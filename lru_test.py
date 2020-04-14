@@ -12,7 +12,7 @@ class main:
         self.cacheitem.put(10)
         print(self.check([5, 10]))
 
-        self.cacheitemget(5)
+        self.cacheitem.get(5)
         print(self.check([10, 5]))
 
         self.cacheitem.put(15)
@@ -20,7 +20,12 @@ class main:
 
     def check(self, checker):
         res = self.cacheitem.get_cache()
-        print(res)
+        if len(res) != len(checker):
+            return False
+        for i,j in enumerate(checker):
+            if j != res[i]:
+                return False
+            return True
 
 if __name__ == "__main__":
     main()
