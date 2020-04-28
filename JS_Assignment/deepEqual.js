@@ -1,57 +1,43 @@
-
-function isPresent(keys2, key1) {
-    for (let j = 0; j < keys2.length; j++) {
-        if (keys2[j] === key1) {
-            return keys2[j]
+function isPresent(keysObj2, key1) {
+    for (let j = 0; j < keysObj2.length; j++) {
+        if (keysObj2[j] === key1) {
+            return keysObj2[j]
         }
     }
     return null
 }
 
-
-function deepEqual(ob1, ob2){
-    if (ob1 === null && ob2 === null){
+function deepEqual(object1, object2) {
+    if (object1 === null && object2 === null) {
         return true
-    } else if ((ob1 === null && ob2 != null) || (ob1 != null && ob2 === null)){
+    } else if ((object1 === null && object2 != null) || (object1 != null && object2 === null)) {
         return false
     } else {
-        if (typeof ob1 != "object" && typeof ob2 != "object"){
-            // console.log("-1")
-            if (typeof ob1 === typeof ob2){
-                // console.log("0")
-                if (ob1 === ob2){
-                    // console.log("1")
+        if (typeof object1 != "object" && typeof object2 != "object") {
+            if (typeof object1 === typeof object2) {
+                if (object1 === object2) {
                     return true
                 } else {
-                    // console.log("2")
                     return false
                 }
             } else {
-                // console.log("3")
                 return false
             }
-        } else if (typeof ob1 === "object" && typeof ob2 === "object"){
-            // console.log("4")
-            const keys1 = Object.keys(ob1)
-            const keys2 = Object.keys(ob2)
-    
-    
-            if (keys1.length != keys2.length){
-                // console.log("5")
+        } else if (typeof object1 === "object" && typeof object2 === "object"){
+            const keysObj1 = Object.keys(object1)
+            const keysObj2 = Object.keys(object2)
+
+            if (keysObj1.length != keysObj2.length){
                 return false
             } else {
-                // console.log("6")
-                for (let i = 0; i < keys1.length; i++){
-                    const key1 = keys1[i]
-                    const key2 = isPresent(keys2, key1)
+                for (let i = 0; i < keysObj1.length; i++){
+                    const key1 = keysObj1[i]
+                    const key2 = isPresent(keysObj2, key1)
                     if (key2 === null) {
-                        // console.log("7")
                         return false
                     } else {
-                        // console.log("8")
                         if (typeof key1 === typeof key2) {
-                            // console.log("9")
-                            if (!(deepEqual(ob1[key1], ob2[key2]))) {
+                            if (!(deepEqual(object1[key1], object2[key2]))) {
                                 return false
                             }        
                         }
@@ -60,37 +46,33 @@ function deepEqual(ob1, ob2){
                 return true
             }
         } else {
-            // console.log("16")
             return false
         }
-    }
-
-
-    
+    }   
 }
 
+const word1 = "BHUVAN"
+const word2 = "BHUVAN"
+const word3 = "ANILCHANDRA"
+const word4 = "ANIL"
 
-
-const str = "ABCD"
-const str1 = "ABCD"
-
-const o1 = {
-    b: "b",
-    a: "a", 
-    c: {
-        d: "d",
+const testObj1 = {
+    name: "bhuvan",
+    roll: 19, 
+    clz: {
+        dept : "MSIT",
     }
 }
 
-
-const o2 = {
-    a: "a",
-    b: "b",
-    c: {
-        d: "d"
+const testObj2 = {
+    roll: 19,
+    name: "bhuvan",
+    clz: {
+        dept: "MSIT",
     }
 }
 
-console.log(deepEqual(str, str1))
-console.log(deepEqual(str, o1))
-console.log(deepEqual(o2, o1))
+console.log(deepEqual(word1, word2))
+console.log(deepEqual(word3, word4))
+console.log(deepEqual(word1, testObj1))
+console.log(deepEqual(testObj2, testObj1))
