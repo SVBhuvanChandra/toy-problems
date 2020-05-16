@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
 const Todo = props => (
     <View style = {styles.todoContainer}>
-        <Button onPress = {props.onDelete} title = "delete" />
+        <Button onPress = {props.onDelete} title = "&#10008;" />
         <CheckBox 
         onPress = {props.onChecked} checked = {props.todo.checked} />
         <Text>{props.todo.text}</Text>
