@@ -84,7 +84,7 @@ export default class TodoApp extends React.Component {
                 }</Text>
 
             <TextInput style={{backgroundColor:'lightgrey', margin:5, padding:7}} id = "taskName" onChangeText = { (taskName) => this.setState({taskName}) } value = {this.state.taskName} placeholder='What to do?' />
-            <TextInput style={{backgroundColor:'lightgrey', margin:5, padding:7}} type = "date"  id = "dueDate"  onChangeText = { (dueDate) => this.setState({dueDate}) } value = {this.state.dueDate} placeholder='When (DD:MM:YYYY) '/>
+            <TextInput style={{backgroundColor:'lightgrey', margin:5, padding:7}} type = "date"  id = "dueDate"  onChangeText = { (dueDate) => this.setState({dueDate}) } value = {this.state.dueDate} placeholder='When? (DD:MM:YYYY) '/>
             <Button onPress = {() => this.addTodo(this.state.taskName 
             + this.state.dueDate)} title = "Add Task" />
             <ScrollView style = {styles.scrollContainer}>
