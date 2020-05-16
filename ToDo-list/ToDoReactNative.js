@@ -77,7 +77,7 @@ export default class TodoApp extends React.Component {
     render() {
         return (
         <View style = {styles.appContainer}>
-            <Text style = {{fontWeight: 'bold',color: 'green', fontSize:22, textAlign:'center'}}>Bhuvan's Todo list</Text>
+            <Text style = {{fontWeight: 'bold',color: 'green', fontSize:22, textAlign:'center'}}>Bhuvan's Todo List</Text>
             <Text style = {{paddingTop: 10, marginLeft: 10, color: 'blue', fontStyle: 'italic'}}>Total Tasks : {this.state.todos.length}</Text>
             <Text style = {{marginLeft: 10, color: 'green', fontStyle: 'italic'}}>Completed Tasks : {
                 this.state.todos.filter(todo => !todo.checked).length
