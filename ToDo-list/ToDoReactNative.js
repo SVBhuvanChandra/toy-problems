@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Button, ScrollView, TextInput, StyleSheet} from 'react-native';
+import {View, Text, Button, ScrollView, TextInput, StyleSheet, Switch} from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import { Constants } from 'expo';
 
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
 const Todo = props => (
     <View style = {styles.todoContainer}>
         <Button onPress = {props.onDelete} title = "&#10008;" />
-        <CheckBox 
-        onPress = {props.onChecked} checked = {props.todo.checked} />
+        <Switch value={props.todo.checked} onValueChange={props.onToggle} />
+        
         <Text>{props.todo.text}</Text>
     </View>
 )
@@ -90,7 +90,7 @@ export default class TodoApp extends React.Component {
             <ScrollView style = {styles.scrollContainer}>
                 {this.state.todos.map(
                     todo => <Todo
-                    onChecked = {() => this.checkedTask(todo.id)}
+                    onToggle = {() => this.checkedTask(todo.id)}
                     onDelete = {() => this.removeTodo(todo.id)} todo = {todo}
                     />)}
             </ScrollView>
